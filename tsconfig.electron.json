@@ -1,0 +1,28 @@
+// // tsconfig.electron.json
+// {
+//     "extends": "./tsconfig.json",
+//     "compilerOptions": {
+//       "target": "ES2020",
+//       "module": "commonjs",
+//       "outDir": "./dist/electron",
+//       "lib": ["ES2020"],
+//       "types": ["node"],
+//       "esModuleInterop": true,
+//       "strict": true
+//     },
+//     "include": ["electron"]
+//   }
+  
+  // tsconfig.electron.json
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "dist/electron",
+      "module": "commonjs",
+      "target": "es2020",
+      "types": ["node"],
+      "esModuleInterop": true
+    },
+    "include": ["src/electron/**/*"]
+  }
+  

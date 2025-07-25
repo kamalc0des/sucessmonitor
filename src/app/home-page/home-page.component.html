@@ -1,0 +1,10 @@
+<div class="container">
+    <h3>LET'S WORK TOGETHER!</h3>
+    <div *ngIf="settings">
+        <h1>Welcome {{ settings.username || 'Guest' }}!</h1>
+        <p>You've completed {{ settings.sessionCount }} sessions.</p>
+      </div>
+    <p>With me you can choose how to work, how long and with fun!</p>
+    <button (click)="onStart()">Let's start!</button>
+</div>
+  
