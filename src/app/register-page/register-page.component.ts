@@ -18,7 +18,7 @@ export class RegisterPageComponent {
     private userSettings: UserSettingsService,
     private router: Router
   ) {
-    console.log('✅ RegisterPageComponent loaded');
+    console.log('RegisterPageComponent loaded');
   }
 
   async onSaveUsername(username: string): Promise<void> {

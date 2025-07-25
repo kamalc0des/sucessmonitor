@@ -3,12 +3,6 @@ import * as url from 'url';
 import * as path from 'path';
 import { storeInstance } from './store-instance';
 
-type UserSettings = {
-  username: string;
-  profilePicture: string;
-  sessionCount: number;
-};
-
 // IPC handlers
 ipcMain.handle('get-settings', () => storeInstance.getSettings());
 ipcMain.handle('update-username', (_, username: string) => storeInstance.updateUsername(username));

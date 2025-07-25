@@ -18,7 +18,7 @@ export class HomePageComponent {
     private userSettings: UserSettingsService,
     private router: Router
   ) {
-    console.log('✅ HomePageComponent loaded');
+    console.log('HomePageComponent loaded');
     this.loadUserSettings();
   }
 

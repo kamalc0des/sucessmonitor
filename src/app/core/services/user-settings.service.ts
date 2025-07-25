@@ -1,4 +1,3 @@
-// src/app/core/services/user-settings.service.ts
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { UserSettings } from '../../types/electron-api';
