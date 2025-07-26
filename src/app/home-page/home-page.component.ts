@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserSettingsService } from '../core/services/user-settings.service';
 import { UserSettings } from '../types/electron-api';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -12,19 +13,13 @@ import { UserSettings } from '../types/electron-api';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  settings: UserSettings | null = null;
+  settings$: Observable<UserSettings>;
 
   constructor(
     private userSettings: UserSettingsService,
     private router: Router
   ) {
-    console.log('HomePageComponent loaded');
-    this.loadUserSettings();
-  }
-
-  async loadUserSettings(): Promise<void> {
-    this.settings = await this.userSettings.getSettings();
-    console.log('✅ User settings loaded:', this.settings);
+    this.settings$ = this.userSettings.getSettings$();
   }
 
   onStart(): void {
