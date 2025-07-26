@@ -1,6 +1,7 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { UserSettings } from '../../types/electron-api';
+import { Observable, from, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +13,35 @@ export class UserSettingsService {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  async getSettings(): Promise<UserSettings | null> {
-    if (!this.isBrowser) return null;
-    return await window.electronAPI.getSettings();
+  getSettings$(): Observable<UserSettings> {
+    if (!this.isBrowser) {
+      return of({
+        username: '',
+        profilePicture: '',
+        sessionCount: 0
+      });
+    }
+
+    return from(window.electronAPI.getSettings());
   }
 
-  async updateUsername(name: string): Promise<void> {
-    if (!this.isBrowser) return;
-    return await window.electronAPI.updateUsername(name);
+  updateUsername(name: string): Observable<void> {
+    if (!this.isBrowser) return of(void 0);
+    return from(window.electronAPI.updateUsername(name));
   }
 
-  async updateProfilePicture(path: string): Promise<void> {
-    if (!this.isBrowser) return;
-    return await window.electronAPI.updateProfilePicture(path);
+  updateProfilePicture(path: string): Observable<void> {
+    if (!this.isBrowser) return of(void 0);
+    return from(window.electronAPI.updateProfilePicture(path));
   }
 
-  async incrementSession(): Promise<void> {
-    if (!this.isBrowser) return;
-    return await window.electronAPI.incrementSession();
+  incrementSession(): Observable<void> {
+    if (!this.isBrowser) return of(void 0);
+    return from(window.electronAPI.incrementSession());
   }
 
-  async reset(): Promise<void> {
-    if (!this.isBrowser) return;
-    return await window.electronAPI.resetSettings();
+  reset(): Observable<void> {
+    if (!this.isBrowser) return of(void 0);
+    return from(window.electronAPI.resetSettings());
   }
 }

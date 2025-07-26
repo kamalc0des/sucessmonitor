@@ -1,10 +1,17 @@
 <div class="container">
-    <h3>LET'S WORK TOGETHER!</h3>
-    <div *ngIf="settings">
-        <h1>Welcome {{ settings.username || 'Guest' }}!</h1>
-        <p>You've completed {{ settings.sessionCount }} sessions.</p>
-      </div>
-    <p>With me you can choose how to work, how long and with fun!</p>
-    <button (click)="onStart()">Let's start!</button>
+  <ng-container *ngIf="settings$ | async as settings">
+    <ng-container *ngIf="settings.username !== ''">
+      <ng-container *ngIf="settings.profilePicture !== ''">
+        <img [src]="settings.profilePicture" />
+      </ng-container>
+      <h1>Welcome back {{ settings.username }}!</h1>
+      <p>You've completed {{ settings.sessionCount || 0 }} sessions.</p>
+    </ng-container>
+    <ng-container *ngIf="settings.username === ''">
+      <h3>LET'S WORK TOGETHER!</h3>
+      <p>With me you can choose how to work, how long and with fun!</p>
+    </ng-container>
+  </ng-container>
+
+  <button (click)="onStart()">Let's start!</button>
 </div>
-  
