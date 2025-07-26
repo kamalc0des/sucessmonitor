@@ -9,7 +9,7 @@ import { UserSettings } from '../types/electron-api';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.scss']
+  styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent {
   settings: UserSettings | null = null;
