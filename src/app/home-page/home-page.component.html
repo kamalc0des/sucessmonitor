@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
   <ng-container *ngIf="settings$ | async as settings">
     <ng-container *ngIf="settings.username !== ''">
       <ng-container *ngIf="settings.profilePicture !== ''">
@@ -13,5 +13,8 @@
     </ng-container>
   </ng-container>
 
-  <button (click)="onStart()">Let's start!</button>
+  <button class="bg-emerald-500 text-white px-4 py-2 rounded" (click)="onStart()">
+    Let's start!
+  </button>
+  
 </div>
