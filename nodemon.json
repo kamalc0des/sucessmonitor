@@ -1,0 +1,6 @@
+{
+    "watch": ["dist/electron"],
+    "ext": "js,ts,html",
+    "exec": "npx electron dist/electron/main.js"
+  }
+  
