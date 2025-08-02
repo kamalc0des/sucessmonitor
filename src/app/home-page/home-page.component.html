@@ -1,20 +1,34 @@
-<div class="container ">
+<div class="w-full max-w-xl mx-auto mt-10 px-6 py-8 rounded-3xl shadow-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white">
   <ng-container *ngIf="settings$ | async as settings">
+    
     <ng-container *ngIf="settings.username !== ''">
-      <ng-container *ngIf="settings.profilePicture !== ''">
-        <img [src]="settings.profilePicture" />
-      </ng-container>
-      <h1>Welcome back {{ settings.username }}!</h1>
-      <p>You've completed {{ settings.sessionCount || 0 }} sessions.</p>
+      <div class="flex flex-col items-center mb-6">
+        <ng-container *ngIf="settings.profilePicture !== ''">
+          <img 
+            [src]="settings.profilePicture"
+            class="w-24 h-24 rounded-full shadow-lg border-4 border-white mb-4"
+            alt="Profile picture"
+          />
+        </ng-container>
+        <h1 class="text-3xl font-bold tracking-wide">Welcome back, {{ settings.username }}!</h1>
+        <p class="text-lg mt-2">You've completed <span class="font-semibold">{{ settings.sessionCount || 0 }}</span> sessions 🎯</p>
+      </div>
     </ng-container>
-    <ng-container *ngIf="settings.username === ''">
-      <h3>LET'S WORK TOGETHER!</h3>
-      <p>With me you can choose how to work, how long and with fun!</p>
-    </ng-container>
-  </ng-container>
 
-  <button class="bg-emerald-500 text-white px-4 py-2 rounded" (click)="onStart()">
-    Let's start!!
-  </button>
-  
+    <ng-container *ngIf="settings.username === ''">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-semibold">LET'S WORK TOGETHER!</h3>
+        <p class="text-base mt-2">With me you can choose how to work, how long and with fun!</p>
+      </div>
+    </ng-container>
+
+    <div class="text-center">
+      <button 
+        class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-2 rounded-full transition duration-200 shadow-md"
+        (click)="onStart()"
+      >
+        🚀 Let's start!
+      </button>
+    </div>
+  </ng-container>
 </div>
